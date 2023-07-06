@@ -1,8 +1,6 @@
 import * as ts from 'typescript';
 import * as _ from 'lodash';
 
-import * as helpers from '../helpers';
-
 /**
  * Collapse unnecessary intersections between type literals
  *

@@ -5,8 +5,6 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import * as ts from 'typescript';
-import * as chalk from 'chalk';
 import * as _ from 'lodash';
 
 import {

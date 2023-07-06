@@ -1,7 +1,4 @@
 import * as ts from 'typescript';
-import * as _ from 'lodash';
-
-import * as helpers from '../helpers';
 
 export type Factory = ts.TransformerFactory<ts.SourceFile>;
 
