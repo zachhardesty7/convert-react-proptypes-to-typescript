@@ -249,7 +249,9 @@ function getStatesOfReactComponentClass(
         });
 
         propertyAccessExpressions.forEach(p => {
-            addMember(p.name);
+            if (ts.isIdentifier(p.name)) {
+                addMember(p.name);
+            }
         });
     }
 
