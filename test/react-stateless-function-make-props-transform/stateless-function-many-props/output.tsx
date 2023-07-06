@@ -1,5 +1,6 @@
 import * as React from "react";
 type MyComponentProps = {
+  children?: React.ReactNode,
   any?: any,
   array?: any[],
   bool?: boolean,

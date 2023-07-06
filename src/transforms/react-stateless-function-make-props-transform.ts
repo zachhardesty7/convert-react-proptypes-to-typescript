@@ -114,7 +114,9 @@ function getPropTypesFromTypeAssignment(propTypesExpressionStatement: ts.Express
         ts.isBinaryExpression(propTypesExpressionStatement.expression) &&
         ts.isObjectLiteralExpression(propTypesExpressionStatement.expression.right)
     ) {
-        return helpers.buildInterfaceFromPropTypeObjectLiteral(propTypesExpressionStatement.expression.right);
+        return helpers.buildInterfaceFromPropTypeObjectLiteral(propTypesExpressionStatement.expression.right, {
+            preserveChildren: true,
+        });
     }
 
     return ts.createTypeLiteralNode([]);

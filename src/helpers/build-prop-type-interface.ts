@@ -13,7 +13,10 @@ import * as ts from 'typescript';
  * }
  * @param objectLiteral
  */
-export function buildInterfaceFromPropTypeObjectLiteral(objectLiteral: ts.ObjectLiteralExpression) {
+export function buildInterfaceFromPropTypeObjectLiteral(
+    objectLiteral: ts.ObjectLiteralExpression,
+    { preserveChildren = false }: { preserveChildren?: boolean } = {},
+) {
     const members = objectLiteral.properties
         // We only need to process PropertyAssignment:
         // {
@@ -29,7 +32,7 @@ export function buildInterfaceFromPropTypeObjectLiteral(objectLiteral: ts.Object
         // }
         .filter(ts.isPropertyAssignment)
         // Ignore children, React types have it
-        .filter(property => property.name.getText() !== 'children')
+        .filter(property => preserveChildren || property.name.getText() !== 'children')
         .map(propertyAssignment => {
             const name = propertyAssignment.name.getText();
             const initializer = propertyAssignment.initializer;
